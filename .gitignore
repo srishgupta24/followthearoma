@@ -1,0 +1,23 @@
+node_modules/
+.next/
+out/
+
+# Secrets — never commit these
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Photos live in Sanity, not Git
+photos/
+
+# Auto-generated mappings (recreated each upload)
+photo-map.json
+photos-manifest.json
+recipes-bulk.json

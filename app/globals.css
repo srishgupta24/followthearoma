@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  ::selection { background-color: #fdf3dc; color: #1a1612; }
+
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: #faf6f0; }
+  ::-webkit-scrollbar-thumb { background: #c8440f; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #a83008; }
+}
+
+@layer components {
+  .section-padding { @apply py-24 px-8 md:px-20; }
+
+  /* Kicker — small label above headings */
+  .kicker {
+    @apply text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-spice
+           flex items-center gap-3 mb-3;
+  }
+  .kicker::before { content:''; @apply block w-7 h-px bg-spice; }
+
+  /* Editorial heading */
+  .heading-xl { @apply font-display text-5xl md:text-6xl font-normal leading-[1.05] tracking-tight; }
+  .heading-lg { @apply font-display text-4xl md:text-5xl font-normal leading-tight tracking-tight; }
+  .heading-md { @apply font-display text-3xl md:text-4xl font-normal leading-snug tracking-tight; }
+
+  /* Body text styles */
+  .body-lg { @apply text-lg text-stone font-light leading-relaxed; }
+  .body-md { @apply text-base text-stone font-light leading-relaxed; }
+  .body-sm { @apply text-sm text-stone font-light leading-relaxed; }
+
+  /* Chip / tag */
+  .chip {
+    @apply text-[0.6rem] font-semibold tracking-[0.08em] uppercase
+           px-2.5 py-1;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-ink text-white px-8 py-3.5 rounded-full
+           text-sm font-medium tracking-wide
+           transition-all duration-200
+           hover:bg-spice hover:-translate-y-0.5
+           hover:shadow-lg hover:shadow-spice/25;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-ink border border-ink/20 px-8 py-3.5 rounded-full
+           text-sm font-medium tracking-wide
+           transition-all duration-200
+           hover:border-spice hover:text-spice;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2
+           focus-visible:ring-spice focus-visible:ring-offset-2;
+  }
+}
