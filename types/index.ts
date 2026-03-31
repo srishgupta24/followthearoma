@@ -60,7 +60,7 @@ export interface SanityImage {
 }
 
 export interface RecipePageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export type ApiResponse<T> =
