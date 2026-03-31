@@ -35,8 +35,8 @@ export const TAG_META: Record<RecipeTag, { label: string; colour: string }> = {
   'indian':       { label: '🇮🇳 Indian',      colour: 'bg-ink text-white shadow-sm'          },
   'kid-friendly': { label: '👧 Kids',         colour: 'bg-gold text-white shadow-sm'         },
   'one-pot':      { label: '🫕 One Pot',      colour: 'bg-bark text-white shadow-sm'         },
-  'gluten-free':  { label: 'GF',              colour: 'bg-stone text-white shadow-sm'        },
-  'dairy-free':   { label: 'DF',              colour: 'bg-stone text-white shadow-sm'        },
+  'gluten-free':  { label: 'GF',              colour: 'bg-spice text-white shadow-sm'        },
+  'dairy-free':   { label: 'DF',              colour: 'bg-spice text-white shadow-sm'        },
   'high-protein': { label: '💪 Protein',      colour: 'bg-cardamom text-white shadow-sm'     },
 }
 
