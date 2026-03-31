@@ -1,4 +1,4 @@
-import { createClient } from 'next-sanity'
+import { createClient } from '@sanity/client'
 import imageUrlBuilder  from '@sanity/image-url'
 import type { SanityImage } from '@/types'
 
