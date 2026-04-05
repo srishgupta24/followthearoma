@@ -125,7 +125,7 @@ Add your `.env.local` values to Vercel's environment variables. Done. 🎉
 ## 🧠 How It All Fits Together
 
 ```
-You write a recipe in Sanity Studio
+Write a recipe in Sanity Studio
         ↓
 Sanity stores it, exposes via GROQ API
         ↓
@@ -137,13 +137,6 @@ Tailwind + Framer Motion make it look great
         ↓
 Vercel serves it globally in milliseconds
 ```
-
----
-
-## 📝 Resume Description
-
-> *"Designed and built a production-grade vegetarian food blog from scratch in 7 days using Next.js 14 App Router, TypeScript, Tailwind CSS, Sanity CMS, and Framer Motion. Implemented ISR, JSON-LD Recipe Schema for Google rich results, full-text fuzzy search with Fuse.js, and a bulk photo uploader script. Achieved Lighthouse scores above 95. Architecture includes a custom React hook for filtering, a component design system with shared tokens, and a Kids Corner feature route built for future expansion."*
-
 ---
 
 ## 🛠 Scripts
