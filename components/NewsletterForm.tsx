@@ -1,14 +1,12 @@
+// refactor this to useNotifyForm for NewsletterForm
 'use client'
+import { NotifyForm } from '@/components/NotifyForm'
 
 export function NewsletterForm() {
   return (
-    <form className="flex gap-2" onSubmit={e => e.preventDefault()}>
-      <input
-        type="email" placeholder="your@email.com"
-        className="flex-1 px-6 py-3.5 border border-ink/12 bg-white text-sm font-light
-                   focus:outline-none focus:border-spice text-ink placeholder:text-sand"
-      />
-      <button type="submit" className="btn-primary whitespace-nowrap">Subscribe →</button>
-    </form>
+    <NotifyForm
+      buttonText="Subscribe"
+      successMessage="You're on the list! Expect deliciousness in your inbox."
+    />
   )
 }

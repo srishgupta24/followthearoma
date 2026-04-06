@@ -45,33 +45,61 @@ export default async function HomePage() {
               🍳
             </div>
             <div className="text-sm text-stone font-light leading-snug">
-              <strong className="text-ink font-medium">@leandiet on Instagram</strong><br/>
+              <strong className="text-ink font-medium">@followthearoma on Instagram</strong><br/>
               Daily family cooking · Vegetarian · Real &amp; unmeasured
             </div>
           </div>
         </div>
 
         {/* Right — editorial mosaic */}
-        <div className="hidden lg:grid grid-cols-3 grid-rows-2 bg-ink gap-px animate-fade-in">
+        <div className="hidden lg:grid grid-cols-2 grid-rows-2 bg-ink gap-px animate-fade-in">
           {[
-            { emoji:'🍛', label:'Dal & Curries',  bg:'#2d1a0e', href:'/recipes?cat=indian',    rows: 2 },
-            { emoji:'🥗', label:'Fresh Salads',   bg:'#1a2d1a', href:'/recipes?cat=salads',    rows: 1 },
-            { emoji:'🥞', label:'Breakfasts',     bg:'#2d2010', href:'/recipes?cat=breakfast', rows: 1 },
-          ].map(({ emoji, label, bg, href, rows }) => (
+            {
+              src:   '/images/hero-indian.jpg',    // ← rename your dal/curry photo to this
+              label: 'Dal & Curries',
+              href:  '/recipes?cat=indian',
+              rows:  1,
+            },
+            {
+              src:   '/images/hero-salads.jpg',    // ← rename your salad photo to this
+              label: 'Fresh Salads',
+              href:  '/recipes?cat=salads',
+              rows:  1,
+            },
+            {
+              src:   '/images/hero-breakfast.jpg', // ← rename your breakfast photo to this
+              label: 'Breakfasts',
+              href:  '/recipes?cat=breakfast',
+              rows:  1,
+            },
+            {
+              src:   '/images/hero-juice.jpg', // ← rename your breakfast photo to this
+              label: 'Drinks & Smoothies',
+              href:  '/recipes?cat=drinks',
+              rows:  1,
+            },
+          ].map(({ src, label, href, rows }) => (
             <Link
               key={label}
               href={href}
-              className="group flex items-center justify-center relative overflow-hidden
-                         hover:brightness-110 transition-all duration-400"
-              style={{
-                background: bg,
-                gridRow: rows === 2 ? 'span 2' : 'span 1',
-                fontSize: rows === 2 ? '8rem' : '5rem',
-              }}
+              className="group relative overflow-hidden border border-white/10"
+              style={{ gridRow: rows === 2 ? 'span 2' : 'span 1' }}
             >
-              <span className="group-hover:scale-110 transition-transform duration-400">{emoji}</span>
-              <span className="absolute bottom-4 left-4 text-[0.65rem] font-semibold uppercase
-                               tracking-[0.14em] text-white/50">
+              {/* Your photo */}
+              <Image
+                src={src}
+                alt={label}
+                fill
+                className="object-cover brightness-75 group-hover:brightness-90
+                          group-hover:scale-105 transition-all duration-500"
+                sizes="33vw"
+                priority
+              />
+              {/* Dark gradient at bottom so label is readable */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              {/* Label */}
+              <span className="absolute bottom-4 left-4 text-xs font-semibold uppercase
+                              tracking-widest text-white z-10">
                 {label}
               </span>
             </Link>
@@ -96,7 +124,7 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <div className="kicker">From the Kitchen</div>
+              <div className="kicker">Fresh This Week</div>
               <h2 className="heading-lg">What we've been cooking</h2>
             </div>
             <Link href="/recipes" className="text-sm font-medium text-spice hover:text-spice-soft transition-colors">
@@ -114,7 +142,7 @@ export default async function HomePage() {
         <section className="section-padding bg-cream">
           <div className="max-w-7xl mx-auto">
             <div className="kicker">Editor's Pick</div>
-            <h2 className="heading-lg mb-12">This week in the kitchen</h2>
+            <h2 className="heading-lg mb-12">This week's Favourite</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 border border-ink/8 bg-white">
               {/* Image */}
@@ -170,36 +198,33 @@ export default async function HomePage() {
       )}
 
       {/* ── STORY ───────────────────────────────────── */}
-      <section id="story" className="bg-ink grid grid-cols-1 lg:grid-cols-2">
+      <section id="story" className="bg-parchment grid grid-cols-1 lg:grid-cols-2 border-y border-ink/8">
         <div className="px-8 md:px-20 py-24 flex flex-col justify-center">
-          <div className="kicker" style={{ color:'#e8845a' }}>
-            <span style={{ display:'block', width:'1.8rem', height:'1px', background:'#e8845a' }}/>
-            Who's Cooking
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl text-white leading-tight tracking-tight mb-6">
-            Indian kitchen,<br/><em className="italic text-gold">American table.</em>
+          <div className="kicker">Who's Cooking</div>
+          <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight tracking-tight mb-6">
+            Indian soul,<br/><em className="italic text-spice">American table.</em>
           </h2>
-          <p className="text-white/50 font-light leading-[1.9] mb-5">
+          <p className="text-stone font-light leading-[1.9] mb-5">
             I grew up watching my mother cook without a single measuring spoon in sight.{' '}
-            <span className="text-white/80">The spices went in by smell.</span>{' '}
+            <span className="text-ink font-medium">The spices went in by smell.</span>{' '}
             The dal was ready when it looked right. The roti was done when it puffed up and told you so.
           </p>
-          <p className="text-white/50 font-light leading-[1.9] mb-8">
+          <p className="text-stone font-light leading-[1.9] mb-8">
             Now I cook for my own family — a mix of dal nights and pancake Sundays, of masala pasta
             and buddha bowls. I write it all down so{' '}
-            <span className="text-white/80">you don't have to guess.</span>
+            <span className="text-ink font-medium">you don't have to guess.</span>
           </p>
           <div className="flex gap-2 flex-wrap">
             {['Vegetarian','Indian Roots','Global Kitchen','Family Cooking','No Rules'].map(t => (
               <span key={t} className="text-[0.7rem] font-medium uppercase tracking-[0.08em]
-                                       border border-white/12 px-3 py-1.5 text-white/35">
+                                        border border-ink/15 px-3 py-1.5 text-stone">
                 {t}
               </span>
             ))}
           </div>
         </div>
         <div className="hidden lg:flex items-center justify-center text-[12rem]
-                        bg-gradient-to-br from-bark to-[#4a2e18] min-h-[480px]">
+                        bg-saffron-pale min-h-[480px] border-l border-ink/8">
           🫕
         </div>
       </section>
@@ -208,20 +233,20 @@ export default async function HomePage() {
       <section id="world" className="section-padding bg-parchment">
         <div className="max-w-7xl mx-auto">
           <div className="kicker">The Global Table</div>
-          <h2 className="heading-lg mb-3">One kitchen, many worlds</h2>
+          <h2 className="heading-lg mb-3">One table, many worlds</h2>
           <p className="body-md max-w-[50ch] mb-12">
             Indian soul on weeknights, avocado toast on weekends, and whatever the week demands.
           </p>
-          <div className="grid grid-cols-5 gap-px bg-ink/8">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-px bg-ink/8">
             {CUISINE_WORLDS.map(({ flag, name, desc }) => (
               <Link
                 key={name}
                 href={`/recipes?cuisine=${name.toLowerCase()}`}
-                className="bg-white p-8 text-center hover:bg-gold-pale transition-colors group"
+                className="bg-white p-4 md:p-8 text-center hover:bg-gold-pale transition-colors group"
               >
-                <span className="text-4xl block mb-3">{flag}</span>
-                <div className="font-display text-lg text-ink group-hover:text-spice transition-colors">{name}</div>
-                <div className="text-xs text-sand mt-1">{desc}</div>
+                <span className="text-3xl md:text-4xl block mb-2 md:mb-3">{flag}</span>
+                <div className="font-display text-sm md:text-lg text-ink group-hover:text-spice transition-colors leading-tight">{name}</div>
+                <div className="text-xs text-sand mt-1 hidden md:block">{desc}</div>
               </Link>
             ))}
           </div>

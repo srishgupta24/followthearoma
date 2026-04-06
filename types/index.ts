@@ -43,6 +43,8 @@ export type RecipeCategory =
   | 'soups'       // Soups, stews, dals served as soup
   | 'global'      // Italian, Mexican, Japanese, fusion
   | 'snacks'      // Sides, chaat, small plates
+  | 'dessert'    // Sweets, cakes, cookies
+  | 'drinks'      // Smoothies, lassis, cocktails
 
 export type RecipeTag =
   | 'quick'

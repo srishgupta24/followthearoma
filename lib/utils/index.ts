@@ -28,6 +28,8 @@ export const CATEGORY_META: Record<RecipeCategory, { label: string; emoji: strin
   soups:     { label: 'Soups',      emoji: '🫕' },
   global:    { label: 'Global',     emoji: '🌍' },
   snacks:    { label: 'Snacks',     emoji: '🥙' },
+  dessert:  { label: 'Desserts',   emoji: '🍰' },
+  drinks:    { label: 'Drinks',     emoji: '🍹' },
 }
 
 export const TAG_META: Record<RecipeTag, { label: string; colour: string }> = {
