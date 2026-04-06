@@ -21,3 +21,4 @@ photos/
 photo-map.json
 photos-manifest.json
 recipes-bulk.json
+*.DS_Store
