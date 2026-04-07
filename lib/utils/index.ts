@@ -63,7 +63,7 @@ export const CUISINE_WORLDS = [
   { flag: '🇺🇸', name: 'American',  desc: 'Weekend brunch'  },
   { flag: '🇮🇹', name: 'Italian',   desc: 'Tuesday pasta'   },
   { flag: '🇲🇽', name: 'Mexican',   desc: 'Taco nights'     },
-  { flag: '🌍',  name: 'Exploring', desc: 'Always more'     },
+  { flag: '🌍',  name: 'Global', desc: 'Always more'     },
 ]
 
 export const SEASONAL_PRODUCE = {

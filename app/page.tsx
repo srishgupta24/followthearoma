@@ -198,34 +198,51 @@ export default async function HomePage() {
       )}
 
       {/* ── STORY ───────────────────────────────────── */}
-      <section id="story" className="bg-parchment grid grid-cols-1 lg:grid-cols-2 border-y border-ink/8">
-        <div className="px-8 md:px-20 py-24 flex flex-col justify-center">
-          <div className="kicker">Who's Cooking</div>
-          <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight tracking-tight mb-6">
-            Indian soul,<br/><em className="italic text-spice">American table.</em>
-          </h2>
-          <p className="text-stone font-light leading-[1.9] mb-5">
-            I grew up watching my mother cook without a single measuring spoon in sight.{' '}
-            <span className="text-ink font-medium">The spices went in by smell.</span>{' '}
-            The dal was ready when it looked right. The roti was done when it puffed up and told you so.
-          </p>
-          <p className="text-stone font-light leading-[1.9] mb-8">
-            Now I cook for my own family — a mix of dal nights and pancake Sundays, of masala pasta
-            and buddha bowls. I write it all down so{' '}
-            <span className="text-ink font-medium">you don't have to guess.</span>
-          </p>
-          <div className="flex gap-2 flex-wrap">
-            {['Vegetarian','Indian Roots','Global Kitchen','Family Cooking','No Rules'].map(t => (
-              <span key={t} className="text-[0.7rem] font-medium uppercase tracking-[0.08em]
-                                        border border-ink/15 px-3 py-1.5 text-stone">
-                {t}
-              </span>
-            ))}
+      <section id="story" className="bg-[#FDF5EC] border-y border-ink/8">
+        <div className="max-w-7xl mx-auto px-8 md:px-20 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* LEFT — Text, always visible */}
+            <div>
+              <div className="kicker">Who's Cooking</div>
+              <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight tracking-tight mb-6">
+                Indian soul,<br/><em className="italic text-spice">American table.</em>
+              </h2>
+              <p className="text-stone font-light leading-[1.9] mb-5">
+                I grew up watching my mother cook without a single measuring spoon in sight.{' '}
+                <span className="text-ink font-medium">The spices went in by smell.</span>{' '}
+                The dal was ready when it looked right. The roti was done when it puffed up and told you so.
+              </p>
+              <p className="text-stone font-light leading-[1.9] mb-8">
+                Now I cook for my own family — a mix of dal nights and pancake Sundays, of masala pasta
+                and buddha bowls. I write it all down so{' '}
+                <span className="text-ink font-medium">you don't have to guess.</span>
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                {['Vegetarian','Indian Roots','Global Kitchen','Family Cooking','No Rules'].map(t => (
+                  <span key={t} className="text-[0.7rem] font-medium uppercase tracking-[0.08em]
+                                            border border-ink/15 px-3 py-1.5 text-stone">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — Placeholder now, swap for Image later */}
+            {/* TO ADD YOUR PHOTO LATER: replace this entire div with:
+                <div className="relative h-[480px] overflow-hidden">
+                  <Image src="/images/our-story.jpg" alt="Our story" fill className="object-cover" />
+                </div>
+            */}
+            <div className="hidden lg:flex items-center justify-center
+                            h-[480px] border border-dashed border-ink/15 rounded-sm">
+              <div className="text-center">
+                <div className="text-4xl mb-3">📸</div>
+                <p className="text-xs text-mist uppercase tracking-widest">Photo coming soon</p>
+              </div>
+            </div>
+
           </div>
-        </div>
-        <div className="hidden lg:flex items-center justify-center text-[12rem]
-                        bg-saffron-pale min-h-[480px] border-l border-ink/8">
-          🫕
         </div>
       </section>
 

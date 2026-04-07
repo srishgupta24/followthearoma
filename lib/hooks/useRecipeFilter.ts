@@ -6,21 +6,29 @@ import type { Recipe, RecipeCategory } from '@/types'
 
 interface UseRecipeFilterReturn {
   filtered:       Recipe[]
-  activeCategory: RecipeCategory | 'all'
+  activeCategory: string
   searchQuery:    string
-  setCategory:    (cat: RecipeCategory | 'all') => void
+  setCategory:    (cat: string) => void
   setSearchQuery: (q: string) => void
   resultCount:    number
 }
 
 export function useRecipeFilter(recipes: Recipe[]): UseRecipeFilterReturn {
-  const [activeCategory, setCategory]  = useState<RecipeCategory | 'all'>('all')
+  const [activeCategory, setCategory]  = useState<string>('all')
   const [searchQuery,    setSearchQuery] = useState('')
 
   const filtered = useMemo(() => {
     let results = activeCategory === 'all'
       ? recipes
-      : recipes.filter(r => r.category === activeCategory || r.tags?.includes(activeCategory as any))
+      : recipes.filter(r => {
+          const val = activeCategory.toLowerCase()
+          return (
+            r.category?.toLowerCase()  === val ||
+            r.cuisine?.toLowerCase()   === val ||
+            r.cuisine?.toLowerCase().includes(val) ||   // "North Indian" matches "indian"
+            r.tags?.some(t => t.toLowerCase() === val)
+          )
+        })
 
     if (searchQuery.trim()) {
       const fuse = new Fuse(results, {

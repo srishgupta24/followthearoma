@@ -3,21 +3,55 @@
 import { MotionDiv, AnimatePresence } from '@/components/ui/Motion'
 import { RecipeCard }              from './RecipeCard'
 import { useRecipeFilter }         from '@/lib/hooks/useRecipeFilter'
-import { CATEGORY_META }           from '@/lib/utils'
-import type { Recipe, RecipeCategory } from '@/types'
+import type { Recipe } from '@/types'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useMemo } from 'react'
 
-const FILTERS: Array<{ value: RecipeCategory | 'all'; label: string }> = [
-  { value: 'all',       label: 'All'              },
-  { value: 'indian',    label: '🍛 Indian'        },
-  { value: 'breakfast', label: '🌅 Breakfast'     },
-  { value: 'salads',    label: '🥗 Salads'        },
-  { value: 'global',    label: '🌍 Global'        },
-  { value: 'snacks',    label: '🥙 Snacks'        },
-]
 
 export function RecipeGrid({ recipes }: { recipes: Recipe[] }) {
+  const searchParams = useSearchParams()
   const { filtered, activeCategory, searchQuery, setCategory, setSearchQuery, resultCount } = useRecipeFilter(recipes)
 
+  const cuisineFilters = useMemo(() => {
+      const seen = new Set<string>()
+      const filters: Array<{ value: string; label: string }> = [
+        { value: 'all', label: 'All' }
+      ]
+
+      // Fixed category filters first
+      const categories = [
+        { value: 'indian',    label: '🍛 Indian'    },
+        { value: 'breakfast', label: '🌅 Breakfast' },
+        { value: 'salads',    label: '🥗 Salads'    },
+        { value: 'global',    label: '🌍 Global'    },
+        { value: 'snacks',    label: '🥙 Snacks'    },
+      ]
+      categories.forEach(c => { filters.push(c); seen.add(c.value) })
+
+      // Then add any unique cuisines from recipe data not already covered
+      recipes.forEach(r => {
+        if (!r.cuisine) return
+        const val = r.cuisine.toLowerCase()
+        // Skip if already covered by a category filter
+        if (seen.has(val)) return
+        // Skip generic ones already captured above
+        if (['north indian','south indian'].some(x => val.includes('indian'))) return
+        seen.add(val)
+        filters.push({ value: val, label: r.cuisine })
+      })
+
+      return filters
+    }, [recipes])
+
+  useEffect(() => {
+    const cat     = searchParams.get('cat')
+    const cuisine = searchParams.get('cuisine')
+    const search  = searchParams.get('search')
+
+    if (cat)     setCategory(cat)
+    if (cuisine) setCategory(cuisine)
+    if (search)  setSearchQuery(search)
+  }, [searchParams])
   return (
     <div>
       {/* Controls */}
@@ -43,7 +77,7 @@ export function RecipeGrid({ recipes }: { recipes: Recipe[] }) {
 
         {/* Filters */}
         <div className="flex gap-2 flex-wrap">
-          {FILTERS.map(({ value, label }) => (
+         {cuisineFilters.map(({ value, label }) => (
             <button
               key={value}
               onClick={() => setCategory(value)}

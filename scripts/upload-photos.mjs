@@ -1,15 +1,3 @@
-#!/usr/bin/env node
-// ─────────────────────────────────────────────────────────────
-// Photo Upload Script
-// Reads every image from /photos and uploads ONLY NEW photos to Sanity CDN
-// (Already-uploaded photos are skipped; tracked in photos-manifest.json)
-//
-// HOW TO RUN:
-//   1. Add photos to the /photos folder
-//   2. Fill in .env.local with your Sanity tokens
-//   3. node scripts/upload-photos.mjs
-// ─────────────────────────────────────────────────────────────
-
 import dotenv from 'dotenv'
 dotenv.config({ path: '.env.local' })
 

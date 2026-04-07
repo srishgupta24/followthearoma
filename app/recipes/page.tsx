@@ -1,6 +1,7 @@
 // ── RECIPES PAGE (/recipes) ───────────────────────────────────
 // This file: app/recipes/page.tsx
 import type { Metadata }  from 'next'
+import { Suspense } from 'react'
 import { getAllRecipes }  from '@/lib/sanity/queries'
 import { RecipeGrid }    from '@/components/recipes/RecipeGrid'
 
@@ -23,7 +24,9 @@ export default async function RecipesPage() {
             All vegetarian. All real. All made in a family kitchen.
           </p>
         </div>
-        <RecipeGrid recipes={recipes} />
+        <Suspense fallback={<div className="text-stone text-sm">Loading recipes...</div>}>
+          <RecipeGrid recipes={recipes} />
+        </Suspense>
       </div>
     </div>
   )

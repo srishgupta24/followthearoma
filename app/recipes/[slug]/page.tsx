@@ -4,7 +4,7 @@ import { notFound }       from 'next/navigation'
 import { getRecipeBySlug, getAllRecipes, getRelatedRecipes } from '@/lib/sanity/queries'
 import { RecipeCard }     from '@/components/recipes/RecipeCard'
 import { urlForImage }    from '@/lib/sanity/client'
-import { formatTime, TAG_META, CATEGORY_META } from '@/lib/utils'
+import { TAG_META, CATEGORY_META } from '@/lib/utils'
 import type { RecipePageProps } from '@/types'
 import './recipe-page.scss'
 
